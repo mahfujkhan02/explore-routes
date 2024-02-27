@@ -7,6 +7,7 @@ import Products from './components/Products/Products';
 import Main from './layout/Main';
 import Friends from './components/Friends/Friends';
 import FriendDetail from './components/FriendDetail/FriendDetail';
+import Posts from './components/Posts/Posts';
 
 function App() {
 
@@ -40,7 +41,13 @@ function App() {
           
           element :<FriendDetail></FriendDetail>
 
-        }
+        },
+
+        {path : 'post',
+        loader : async() => {
+          return fetch('https://jsonplaceholder.typicode.com/posts')
+        },
+         element : <Posts></Posts>}
 
 
       ]
