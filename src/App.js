@@ -8,6 +8,7 @@ import Main from './layout/Main';
 import Friends from './components/Friends/Friends';
 import FriendDetail from './components/FriendDetail/FriendDetail';
 import Posts from './components/Posts/Posts';
+import PostDetails from './components/PostDetails/PostDetails';
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
         { path: 'products', element: <Products></Products> },
         {
           path: 'friends',
-          loader : async() =>{
+          loader: async () => {
 
             return fetch('https://jsonplaceholder.typicode.com/users')
 
@@ -32,22 +33,36 @@ function App() {
         },
 
         {
-          path : '/friend/:friendId', 
+          path: '/friend/:friendId',
 
-        loader: async ({params})=>{
-          // console.log(params.friendId)
-          return fetch(`https://jsonplaceholder.typicode.com/users/${params.friendId}`)
-        },
-          
-          element :<FriendDetail></FriendDetail>
+          loader: async ({ params }) => {
+            // console.log(params.friendId)
+            return fetch(`https://jsonplaceholder.typicode.com/users/${params.friendId}`)
+          },
+
+          element: <FriendDetail></FriendDetail>
 
         },
 
-        {path : 'post',
-        loader : async() => {
-          return fetch('https://jsonplaceholder.typicode.com/posts')
+        {
+          path: 'post',
+          loader: async () => {
+            return fetch('https://jsonplaceholder.typicode.com/posts')
+          },
+          element: <Posts></Posts>
+
         },
-         element : <Posts></Posts>}
+
+
+        {
+          path: '/post/:postId',
+          loader : async({params}) =>{
+            return fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
+
+          },
+          element: <PostDetails></PostDetails>
+
+        },
 
 
       ]

@@ -3,7 +3,7 @@ import './Post.css'
 import { Link, useNavigate } from 'react-router-dom';
 
 const Post = ({post}) => {
-    const {id , title , body, userId} = post
+    const {id , title , body} = post
     const navigate = useNavigate()
     const handleNavigate = () =>{
 
@@ -12,7 +12,7 @@ const Post = ({post}) => {
     }
     return (
         <div className='post'>
-            <p>ID : {userId}</p>
+            
             <p>Title : {title}</p>
             <p>Body : {body}</p>
             <Link to={`/post/${id}`}>visit : {id}</Link>
